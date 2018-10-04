@@ -882,6 +882,7 @@ jQuery( document ).ready( function ( $ ) {
 			data.append( key, value );
 		});
 
+		data.append( 'control_name', event.target.name );
 		jQuery.ajax ({
 			url: rtmedia_fileupload_url,
 			type: 'POST',
@@ -900,6 +901,7 @@ jQuery( document ).ready( function ( $ ) {
 					});
 
 					if( 'success' === data.rtm_response ) {
+
 						setting_message.addClass( 'rtm-success rtm-save-settings-msg' );
 						setting_message.text( data.rtm_response_msg );
 						jQuery('.rtm-button-container.top').append( setting_message );

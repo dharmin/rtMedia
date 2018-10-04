@@ -6,6 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$control_name = filter_input ( INPUT_POST, 'control_name', FILTER_SANITIZE_STRING );
+
 $data = array();
 if ( ! empty( $_FILES ) ) {
 	$error = false;
@@ -21,7 +23,13 @@ if ( ! empty( $_FILES ) ) {
 			die( 'Failed to create folders...' );
 		}
 	}
+
 	$allowd_type = array( 'jpg', 'jpeg', 'png', 'gif', 'zip', 'doc', 'docx', 'pdf', 'txt' );
+
+	if ( in_array( $control_name, array( 'rtm_default_thumbnail_audio', 'rtm_default_thumbnail_video' ), true ) ) {
+		$allowd_type = array( 'jpg', 'jpeg', 'png', 'gif' );
+	}
+
 	/* move file to target folder */
 	/**
 	 * Code to check whether the uploaded file is settings json file
