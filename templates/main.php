@@ -53,7 +53,7 @@ if ( ! $rt_ajax_request ) {
 			</div><!--#item-header-->
 
 			<div id="item-nav">
-			<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+			<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
 			<ul>
 
 				<?php bp_get_displayed_user_nav(); ?>
@@ -112,7 +112,7 @@ if ( ! $rt_ajax_request ) {
 	</div><!--#item-header-->
 
 	<div id="item-nav">
-		<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+		<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
 			<ul>
 
 				<?php bp_get_options_nav(); ?>

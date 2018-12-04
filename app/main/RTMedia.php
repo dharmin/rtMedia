@@ -1275,8 +1275,8 @@ class RTMedia {
 			$rtmedia_router = new RTMediaRouter();
 			if ( ! empty( $rtmedia_router->query_vars ) ) {
 				$wp_current_stylesheet = get_stylesheet();
-				wp_enqueue_style( 'bp-neavuaue-stylesheet-theme', BP_PLUGIN_URL . 'bp-templates/bp-legacy/css/'. $wp_current_stylesheet . ".min.css" );
-				wp_enqueue_style( 'bp-neavuaue-stylesheet-buddypress', BP_PLUGIN_URL . 'bp-templates/bp-legacy/css/buddypress.min.css', '' );
+				wp_enqueue_style( 'bp-nouveau-stylesheet-theme', BP_PLUGIN_URL . 'bp-templates/bp-legacy/css/'. $wp_current_stylesheet . ".min.css" );
+				wp_enqueue_style( 'bp-nouveau-stylesheet-buddypress', BP_PLUGIN_URL . 'bp-templates/bp-legacy/css/buddypress.min.css', '' );
 			}
 		}
 	}
