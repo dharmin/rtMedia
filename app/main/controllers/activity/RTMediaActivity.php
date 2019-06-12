@@ -170,18 +170,7 @@ class RTMediaActivity {
 		$activity .= $activity_container_end;
 
 		// Bypass comment links limit.
-		add_filter(
-			'option_comment_max_links',
-			function ( $values ) {
-				$rtmedia_attached_files = filter_input( INPUT_POST, 'rtMedia_attached_files', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-				// Check  if files available.
-				if ( is_array( $rtmedia_attached_files ) && ! empty( $rtmedia_attached_files[0] ) ) {
-					// One url of image and other for anchor tag.
-					$values = count( $rtmedia_attached_files ) * 3;
-				}
-				return $values;
-			}
-		);
+		add_filter( 'option_comment_max_links', array( $this, 'increase_comment_max_links' ) );
 
 		return bp_activity_filter_kses( $activity );
 	}
@@ -225,5 +214,21 @@ class RTMediaActivity {
 		}
 
 		return apply_filters( 'rtmedia_single_activity_filter', $html, $media, true );
+	}
+
+	/**
+	 * Bypass the value of maximum links in activity by changing the option comment_max_links.
+	 *
+	 * @param int $values Value of comment_max_links option.
+	 * @return int
+	 */
+	public function bypass_comment_max_links( $values ) {
+		$rtmedia_attached_files = filter_input( INPUT_POST, 'rtMedia_attached_files', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		// Check  if files available.
+		if ( is_array( $rtmedia_attached_files ) && ! empty( $rtmedia_attached_files[0] ) ) {
+			// One src of the thumbnail and others for href in anchor tag.
+			$values = count( $rtmedia_attached_files ) * 3;
+		}
+		return $values;
 	}
 }
